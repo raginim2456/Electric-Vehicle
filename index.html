@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Vehicle Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .chart {
+            margin: 20px 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Electric Vehicle Dashboard</h1>
+        <canvas id="evTypeChart" class="chart"></canvas>
+        <canvas id="makeModelChart" class="chart"></canvas>
+        <canvas id="rangeYearChart" class="chart"></canvas>
+    </div>
+
+    <script>
+        // Sample data - replace with actual data processing
+        const evTypeData = {
+            labels: ['BEV', 'PHEV'],
+            datasets: [{
+                label: 'EV Types',
+                data: [70, 30],
+                backgroundColor: ['#007bff', '#28a745']
+            }]
+        };
+
+        const makeModelData = {
+            labels: ['Tesla Model S', 'Nissan Leaf', 'Chevy Bolt'],
+            datasets: [{
+                label: 'Top Models',
+                data: [50, 30, 20],
+                backgroundColor: ['#007bff', '#ffc107', '#17a2b8']
+            }]
+        };
+
+        const rangeYearData = {
+            labels: ['2018', '2019', '2020', '2021', '2022'],
+            datasets: [{
+                label: 'Average Electric Range',
+                data: [200, 220, 240, 260, 280],
+                backgroundColor: '#007bff'
+            }]
+        };
+
+        const ctx1 = document.getElementById('evTypeChart').getContext('2d');
+        const ctx2 = document.getElementById('makeModelChart').getContext('2d');
+        const ctx3 = document.getElementById('rangeYearChart').getContext('2d');
+
+        new Chart(ctx1, {
+            type: 'pie',
+            data: evTypeData
+        });
+
+        new Chart(ctx2, {
+            type: 'bar',
+            data: makeModelData
+        });
+
+        new Chart(ctx3, {
+            type: 'line',
+            data: rangeYearData
+        });
+    </script>
+</body>
+</html>
